@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather form</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>    
+    <div class="container">
+        {{>header}}
+
+        <section class="section">
+            <p>Use this site to get your weather!</p>
+
+            <form>
+                <input placeholder="Location">
+                <button>Search</button>
+            </form>
+
+            <pre>
+
+            </pre>
+        </section>
+
+        {{>footer}}
+    </div>
+    <script>
+        console.log('Client side javascript file is loaded!')
+
+        const weatherForm = document.querySelector('form')
+        const search = document.querySelector('input')
+        const pre = document.querySelector('pre')
+
+        weatherForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const location = search.value
+
+            pre.innerHTML = 'Loading...'
+
+            fetch('http://localhost:4000/weather?address=' + location).then((response) => {
+                response.json().then((data) => {
+                    if (data.error) {
+                        pre.innerHTML = data.error
+                    } else {
+                        pre.innerHTML =`location: ${data.location} \nforecast: ${data.forecast}`;
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html> 
