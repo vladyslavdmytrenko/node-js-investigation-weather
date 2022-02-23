@@ -1,0 +1,31 @@
+body {
+  background-color: #1c1e26;
+  color: #bbbbbb;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.container {
+  width: 1200px;
+}
+
+h1 {
+  color: #d55170;
+}
+
+a {
+  color: #24a2ae;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 5px;
+  border: 1px solid #24a2ae;
+  border-radius: 5px;
+}
+
+a:active {
+  color: #d55170;
+
+  text-decoration: underline;
+}
